@@ -26,18 +26,25 @@ const Presentation = ({ setWelcomeMessage }) => {
   };
 
   return (
-    <div className="z-40">
-      <section className="flex flex-col ">
-        <p className="text-lg text-darkBlue">Hola, mi nombre es </p>
+    <div className="flex items-center gap-20 scroll-mt-60" id="presentacion">
+      <section className="flex flex-col justify-center items-center text-center gap-4 w-fit">
+        <p className="lg:text-sm text-xs text-skyBlue tracking-widest w-fit">
+          Hola, mi nombre es{" "}
+        </p>
         <h1
           onClick={handleNameClick}
-          className="text-darkGray font-extrabold text-4xl z-50 hover:animate-pulse cursor-pointer"
+          className="text-lightBlue font-extrabold text-3xl md:text-6xl hover:animate-pulse cursor-pointer w-fit"
         >
           Bryan Sneider Vélez.
         </h1>
-        <p className="text-lg text-darkGray">
-          Estudiante de desarrollo de software{" "}
+        <p className="md:text-lg text-sm text-gray-400 md:tracking-[4px] tracking-[1px] md:w-7/12">
+          Soy un estudiante de desarrollo de software aprendiendo a crear
+          experiencias digitales.
         </p>
+
+        <button className="border text-white bg-skyBlue/10 lg:bg-transparent lg:border-skyBlue lg:text-skyBlue py-3 px-10 w-fit text-xs hover:bg-skyBlue/10 hover:text-white hover:border-none tracking-[3px] mt-10 rounded-md">
+          Contactame
+        </button>
       </section>
     </div>
   );

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import CardProyectos from "../../components/CardProyectos";
 
 const Projects = () => {
   return (
@@ -16,8 +15,8 @@ const Projects = () => {
         <hr className="border-2 w-full border-black" />
       </div>
       <div className="flex-1 flex flex-col gap-3 pl-40 p-10 overflow-y-auto">
-        <CardProyectos></CardProyectos>
-        <CardProyectos></CardProyectos>
+        {/* <CardProyectos></CardProyectos>
+        <CardProyectos></CardProyectos> */}
       </div>
     </main>
   );

@@ -1,93 +1,108 @@
-const CardProyectos = () => {
+import { useState } from "react";
+import useScreenSize from "../hooks/useScreenSize";
+
+const CardProyectos = ({ img, titulo, descripcion, unidad }) => {
+  const [mostrar, setMostrar] = useState(false);
+  const alternarEstado = () => {
+    setMostrar(!mostrar);
+  };
+  const { desktop } = useScreenSize();
   return (
-    <main className="flex flex-col gap-6">
-      <section className="p-3 flex gap-3 rounded-md relative h-72 w-full">
-        <div className="flex flex-col justify-between w-6/12 z-50 h-full ">
-          <div>
-            <span className="text-[8px] text-darkBlue">Proyecto 1</span>
-            <h1 className="text-lightPink font-bold">Portafolio</h1>
-          </div>
-          <div className="bg-lightGray rounded-md p-3 h-36 shadow-customRight flex flex-col gap-2  justify-center ">
-            <p className="text-black text-xs line-clamp-4 leading-4">
-              Una aplicación web para visualizar datos personalizados de
-              Spotify. Consulta los artistas más destacados, las canciones más
-              conocidas, las pistas reproducidas recientemente e información de
-              audio detallada sobre cada pista. Crea y guarda nuevas listas de
-              reproducción de pistas recomendadas en función de tus listas de
-              reproducción existentes y mucho más.{" "}
-            </p>
-            {/* <a href="" className="text-xs">
-              Ver mas...
-            </a> */}
-          </div>
-          <div className="flex items-center gap-2 justify-around overflow-y-auto">
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              React
+    <div>
+      {desktop ? (
+        <div
+          className="flex flex-col hover:shadow-customBlack rounded-xl h-fit cursor-pointer"
+          onClick={alternarEstado}
+        >
+          <main className="  flex gap-2 relative">
+            <figure
+              className={`w-8/12 h-auto flex ${
+                mostrar ? "rounded-tl-xl" : "rounded-l-xl"
+              }`}
+            >
+              <img
+                src={img}
+                alt=""
+                className={`w-full h-full ${
+                  mostrar ? "rounded-tl-xl" : "rounded-l-xl"
+                }`}
+              />
+            </figure>
+            <span className="text-white flex gap-2 tracking-[3px] text-[8px] absolute top-2 right-2">
+              Proyecto <strong className="text-white"> {unidad}</strong>
             </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              JavaScript
-            </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              HTML
-            </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              Tailwindcss
-            </span>
-          </div>
+            <section className="p-3 flex flex-1 flex-col absolute right-0 shadow-customWhite bg-white/20 rounded-l-xl top-0 translate-y-1/2">
+              <h1 className="text-white text-5xl">{titulo}</h1>
+            </section>
+          </main>
+          {mostrar && (
+            <section>
+              <p className="text-gray-400 font-Play text-xs w-11/12 mx-auto mt-5">
+                {descripcion}
+              </p>
+              <div className="flex items-center justify-end gap-3 font-Play text-xs mb-5 w-11/12 mx-auto">
+                <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                  HTML
+                </span>
+                <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                  CSS
+                </span>
+                <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                  JavaScript
+                </span>
+                <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                  React
+                </span>
+              </div>
+            </section>
+          )}
         </div>
-        <figure className="rounded-md w-7/12 absolute right-0 z-20 h-auto">
+      ) : (
+        <section className="rounded-xl relative">
           <img
-            src="/image/portafolio.png"
-            alt="portafolio"
-            className="w-auto h-full bg-cover bg-center opacity-30 hover:opacity-100 rounded-md"
+            src={img}
+            alt=""
+            className="h-full w-full bg-cover rounded-xl"
+            onClick={alternarEstado}
           />
-        </figure>
-      </section>
-      <hr className="w-full" />
-      <section className="p-3 flex gap-3 rounded-md relative h-72 w-full justify-end">
-        <figure className="rounded-md w-7/12 absolute left-0 z-20 h-auto">
-          <img
-            src="/image/portafolio.png"
-            alt="portafolio"
-            className="w-auto h-full bg-cover bg-center opacity-30 hover:opacity-100 rounded-md"
-          />
-        </figure>
-        <div className="flex flex-col justify-between w-6/12 z-50 h-full ">
-          <div className="text-right">
-            <span className="text-[8px] text-darkBlue">Proyecto 1</span>
-            <h1 className="text-lightPink font-bold">Portafolio</h1>
-          </div>
-          <div className="bg-lightGray rounded-md p-3 h-36 shadow-customLeft flex flex-col gap-2  justify-center ">
-            <p className="text-black text-xs line-clamp-4 leading-4">
-              Una aplicación web para visualizar datos personalizados de
-              Spotify. Consulta los artistas más destacados, las canciones más
-              conocidas, las pistas reproducidas recientemente e información de
-              audio detallada sobre cada pista. Crea y guarda nuevas listas de
-              reproducción de pistas recomendadas en función de tus listas de
-              reproducción existentes y mucho más.{" "}
-            </p>
-            {/* <a href="" className="text-xs">
-              Ver mas...
-            </a> */}
-          </div>
-          <div className="flex items-center gap-2 justify-around overflow-y-auto">
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              React
-            </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              JavaScript
-            </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              HTML
-            </span>
-            <span className="bg-lightPink px-2 py-1 rounded-full text-xs">
-              Tailwindcss
-            </span>
-          </div>
-        </div>
-      </section>
-      <hr className="w-full" />
-    </main>
+          {mostrar && (
+            <div
+              onClick={alternarEstado}
+              className={`${
+                mostrar &&
+                "h-full w-full rounded-xl bg-darkBlueGray/90 p-3 absolute top-0 shadow-customLeft"
+              }`}
+            >
+              <section className="p-1 px-3 flex flex-1 flex-col  shadow-customWhite bg-white/20 rounded-l-xl">
+                <span className="text-white flex gap-2 tracking-[3px] text-[8px] ">
+                  Proyecto <strong className="text-white"> {unidad}</strong>
+                </span>
+                <h1 className="text-white text-xl">{titulo}</h1>
+              </section>
+              <section>
+                <p className="text-white font-Play text-[10px] mt-3 line-clamp-4 ">
+                  {descripcion}
+                </p>
+                <div className="flex items-center justify-between gap-3 font-Play text-xs mt-3 pb-3">
+                  <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                    HTML
+                  </span>
+                  <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                    CSS
+                  </span>
+                  <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                    JavaScript
+                  </span>
+                  <span className="bg-skyBlue/10 text-white px-3 rounded-full">
+                    React
+                  </span>
+                </div>
+              </section>
+            </div>
+          )}
+        </section>
+      )}
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 const { Link } = require("react-router-dom");
-const { default: SocialNetworks } = require("../../components/SocialNetworks");
 
 const Contact = () => {
   return (
@@ -22,9 +21,7 @@ const Contact = () => {
           vemos en redes!
         </p>
       </div>
-      <div className="absolute right-20 top-10">
-        <SocialNetworks />
-      </div>
+      <div className="absolute right-20 top-10"></div>
     </section>
   );
 };
